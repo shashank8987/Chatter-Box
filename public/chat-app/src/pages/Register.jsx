@@ -1,14 +1,70 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import styled from "styled-components"
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png';
+import {ToastContainer,toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import axios from "axios"
+import { registerRoute } from '../utils/APIRoutes';
 function Register() {
-    const handleSubmit=(event)=>{
+    const navigate=useNavigate();
+    const [values,setValues]=useState({
+        username:"",
+        email:"",
+        password:"",
+        confirmpassword:""
+    });
+    const toastOptions={
+        
+            position:"bottom-right",
+            autoClose:8000,
+            pauseOnHover:true,
+            draggable:true,
+            theme:"dark"
+        
+    };
+    const handleSubmit= async (event) => {
         event.preventDefault();
-        alert("form");
+        if(handleValidation()){
+            console.log("in valid",registerRoute)
+            const {password,confirmpassword,username,email}=values;
+            const {data}=await axios.post(registerRoute,{
+                username,
+                email,
+                password,
+            });
+            if(data.status===false){
+                toast.error(data.msg,toastOptions);
+            }
+            if(data.status===true){
+                localStorage.setItem('chat-app-user',JSON.stringify(data.user));
+                navigate('/');
+            }
+            
+        }
+    };
+    const handleValidation=()=>{
+        const {password,confirmpassword,username,email}=values;
+        if(password!=confirmpassword){
+            toast.error("Password and Confirm password should be same",toastOptions);
+            return false;
+        }
+        else if(username.length<=1){
+            toast.error("Username cannot be less than 2 characters",toastOptions);
+            return false;
+        }
+        else if(password.length<=7){
+            toast.error("Password is weak, keep it of more than 7 characters",toastOptions);
+            return false;
+        }
+        else if(email===""){
+            toast.error("Email cannot be empty",toastOptions);
+            return false;
+        }
+        return true;
     }
     const handleChange=(event)=>{
-
+        setValues({...values,[event.target.name]:event.target.value});
     }
   return (
     <>
@@ -26,6 +82,7 @@ function Register() {
             <span>Already have an account?<Link to="/login">Login</Link></span>
         </form>
     </FormContainer>
+    <ToastContainer />
     </>  
 )
 }
