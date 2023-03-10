@@ -23,6 +23,11 @@ function Register() {
             theme:"dark"
         
     };
+    useEffect(()=>{
+        if(localStorage.getItem('chat-app-user')){
+          navigate('/');
+        }
+      },[])
     const handleSubmit= async (event) => {
         event.preventDefault();
         if(handleValidation()){
@@ -79,7 +84,7 @@ function Register() {
             <input type="password" placeholder='Password' name='password' onChange={(e)=>handleChange(e)}/>
             <input type="password" placeholder='Confirm Password' name='confirmpassword' onChange={(e)=>handleChange(e)}/>
             <button type='submit'>Create User</button>
-            <span>Already have an account?<Link to="/login">Login</Link></span>
+            <span>Already have an account? <Link to="/login">Login</Link></span>
         </form>
     </FormContainer>
     <ToastContainer />
