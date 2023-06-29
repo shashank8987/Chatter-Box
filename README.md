@@ -16,7 +16,17 @@
   5) NodeJS
   6) Socket.io
   
-  
+## To start with the application first download the zip or clone it, then :- 
+
+- Go to server side by cd server.
+- Install the npm modules by npm i.
+- Go to client side by cd public.
+- Install the npm modules for frontend by npm i.
+- Create your own .env file.
+- Start the backend server by npm run start and react by npm start.
+- The app will get started. 
+
+
 ## Screenshots
 
 ![Screenshot 1](./images/p1.png)
@@ -28,14 +38,6 @@
 
 
 
-## To start with the project first download the zip file or clone it 
 
-- Go to server side by cd server.
-- Install the npm modules by npm i.
-- Go to client side by cd public.
-- Install the npm modules for frontend by npm i.
-- Create your own .env file.
-- Start the backend server by npm run start and react by npm start.
-- The app will get started. 
 
 
