@@ -14,6 +14,7 @@
   3) ReactJS
   4) ExpressJS
   5) NodeJS
+  6) Socket.io
   
   
 ## Screenshots
