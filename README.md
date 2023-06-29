@@ -9,12 +9,12 @@
 
 
 ## Technology Stack:
-  1) MongoDB
-  2) Multiavatar API
-  3) ReactJS
-  4) ExpressJS
-  5) NodeJS
-  6) Socket.io
+  - MongoDB
+  - Multiavatar API
+  - ReactJS
+  - ExpressJS
+  - NodeJS
+  - Socket.io
   
 ## To start with the application first download the zip or clone it, then :- 
 
