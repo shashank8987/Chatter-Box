@@ -16,7 +16,7 @@
   - NodeJS
   - Socket.io
   
-## To start with the application first download the zip or clone it, then :- 
+## To start with the application first download the zip or clone it, then :
 
 - Go to server side by cd server.
 - Install the npm modules by npm i.
